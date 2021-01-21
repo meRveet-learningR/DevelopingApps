@@ -1,0 +1,40 @@
+---
+title: "Plotly"
+author: "MT"
+date: "1/22/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = T)
+```
+
+## Plotly on MTCARS
+```{r, echo=F}
+library(plotly)
+data(mtcars)
+plot_ly(
+  type = 'scatter',
+  x = mtcars$hp,
+  y = mtcars$qsec,
+  text = paste("Make: ", rownames(mtcars),
+               "<br>hp: ", mtcars$hp,
+               "<br>qsec: ", mtcars$qsec,
+               "<br>Cyl: ", mtcars$cyl),
+  hoverinfo = 'text',
+  mode = 'markers',
+  transforms = list(
+    list(
+      type = 'groupby',
+      groups = mtcars$cyl,
+      styles = list(
+        list(target = 4, value = list(marker =list(color = 'blue'))),
+        list(target = 6, value = list(marker =list(color = 'red'))),
+        list(target = 8, value = list(marker =list(color = 'black')))
+      )
+      )
+    )
+  )%>%
+        layout(title="Cars comparison between HP and MPG", xaxis=list(title="HP"), yaxis=list(title="MPG"))
+```
+
