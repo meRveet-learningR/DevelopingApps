@@ -12,6 +12,8 @@ library(HistData)
 data(GaltonFamilies)
 library(dplyr)
 library(ggplot2)
+x<- GaltonFamilies
+x<- x %>% mutate(father=father*2.54, mother= mother*2.54, childHeight= childHeight*2.54)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
