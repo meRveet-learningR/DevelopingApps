@@ -1,0 +1,50 @@
+---
+title: "Shiny App Slidy"
+author: "MT"
+date: "1/24/2021"
+output:
+  ioslides_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = T)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Objectives of this Presentation
+- Data used and what is it about
+- To explain the purpose of the application
+- How to use the application
+
+## Exploring Dataset Used in this Application
+
+```{r, echo = F}
+library(HistData)
+data(GaltonFamilies)
+summary(GaltonFamilies)
+```
+
+## Slide with Plot
+Using the data set we can observe that there is a trend of children's height when compared to parent's height.
+```{r}
+library (HistData)
+library(ggplot2)
+data(GaltonFamilies)
+ggplot(GaltonFamilies,aes(x=((father+mother)*2.54)/2, y=childHeight*2.54, color=as.factor(gender), )) +
+            geom_point(stat="identity") +
+            xlab("Average of Parents' Height (cm)") +
+            ylab("Children's Height (cm)") +
+            theme_minimal() +
+            theme(legend.position="none")
+```
+
+## Application's Instruction
+- Application can be accessed at this [html page]
+
+- Application R code can be accessed at [my github]
+
+1) Input parent's height on the side panel
+2) Select the gender of the child
+3) Prediction will be shown on the main panel upon input of height
+
