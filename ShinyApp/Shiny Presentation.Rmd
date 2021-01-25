@@ -25,24 +25,28 @@ data(GaltonFamilies)
 summary(GaltonFamilies)
 ```
 
-## Slide with Plot
-Using the data set we can observe that there is a trend of children's height when compared to parent's height.
-```{r}
+## Data Plot
+Using the data set we can observe that there is a trend of children's height when compared to parent's height. Lm is generated based on father+mother+gender variables.
+
+```{r, echo=F}
 library (HistData)
 library(ggplot2)
+library(dplyr)
 data(GaltonFamilies)
+
 ggplot(GaltonFamilies,aes(x=((father+mother)*2.54)/2, y=childHeight*2.54, color=as.factor(gender))) +
-            geom_point(stat="identity") +
-            xlab("Average of Parents' Height (cm)") +
-            ylab("Children's Height (cm)") +
-            theme_minimal() +
-            theme(legend.position="none")
+        geom_point(stat="identity") + 
+        xlab("Average of Parents' Height (cm)") + 
+        ylab("Children's Height (cm)") + 
+        theme_minimal() +
+        theme(legend.position="none")
+
 ```
 
 ## Application's Instruction
 - Application can be accessed at this [html page](https://merveet.shinyapps.io/shinyapp/)
 
-- Application R code can be accessed at [my github]()
+- Application R code can be accessed at [my github](https://github.com/meRveet/DevelopingApps/tree/gh-pages/ShinyApp)
 
 1) Input parent's height on the side panel
 2) Select the gender of the child
